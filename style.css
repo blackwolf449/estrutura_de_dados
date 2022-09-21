@@ -12,6 +12,9 @@ nav {
 
 .mid-navbar {
     margin: 0 auto;
+    display: flex;
+    padding: 10px;
+    gap: 10px;
 }
 
 .button {

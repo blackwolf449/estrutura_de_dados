@@ -1,32 +1,47 @@
-const hash = []
+class Hash {
+    constructor() {
+        this.table = {}
+    }
+    add(arrKeys, arrValues) {
+        for (let i = 0; i < arrKeys.length; i++) {
+            if (this.table[arrKeys[i]])
+                return console.error('Essa chave já está sendo usada')
+            this.table[arrKeys[i]] = arrValues[i]
+        }
+    }
+    change(key, value) {
+        if (!this.table[key]) return console.error('Essa chave não foi criada')
+        this.table[key] = value
+    }
+    get(key) {
+        return this.table[key]
+    }
+    getAll() {
+        return this.table
+    }
+}
+
+let hash = new Hash()
+const inputKey = document.querySelector('input[name = "key"]')
 const input = document.querySelector('input[name = "value"]')
 const addBtn = document.querySelector('.add')
-const removeBtn = document.querySelector('.remove')
 const card = document.querySelector('.card')
 let secondTime = false
 
 addBtn.onclick = () => {
-    const token = getToken(pilha.length)
-    pilha.push([input.ariaValueMax, token])
+    hash.add(inputKey.value.split(' '), input.value.split(' '))
     render()
-}
-
-removeBtn.onclick = () => {
-    pilha.pop()
-    render()
-}
-
-function getToken(min, max, id) {
-    min = Math.ceil(min)
-    max = Math.floor(max)
-    return Math.floor(Math.random() * (max - min + 1) + min) + id
 }
 
 function render() {
     const container = document.createElement('div')
     if (secondTime) {
+        let text = ''
         const p = document.querySelector('.values')
-        p.innerText = pilha.join('\n')
+        for (i in hash.table) {
+            text = text + '\nChave: ' + i + ' Valor: ' + hash.table[i]
+        }
+        p.innerText = text
     } else {
         card.append(container)
         container.className = 'container card column'
@@ -36,13 +51,17 @@ function render() {
 
         const h1 = document.createElement('h1')
         container.append(h1)
-        h1.innerText = 'Pilha:'
+        h1.innerText = 'Hash:'
         h1.className = 'center'
 
         const p = document.createElement('p')
         container.append(p)
         p.className = 'center values'
-        p.innerText = pilha.join('\n')
+        let text = ''
+        for (i in hash.table) {
+            text = text + '\nChave:' + i + ' Valor:' + hash.table[i]
+        }
+        p.innerText = text
         secondTime = true
     }
 }
