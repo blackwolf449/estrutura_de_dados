@@ -1,6 +1,7 @@
 const filaBtn = document.querySelector('.fila')
 const homeBtn = document.querySelector('.home')
 const pilhaBtn = document.querySelector('.pilha')
+const arvoreBtn = document.querySelector('.arvore')
 const hashBtn = document.querySelector('.hash')
 const iframe = document.querySelector('iframe')
 
@@ -18,4 +19,8 @@ pilhaBtn.onclick = () => {
 
 hashBtn.onclick = () => {
     iframe.src = './pages/hash.html'
+}
+
+arvoreBtn.onclick = () => {
+    iframe.src = './pages/arvore.html'
 }

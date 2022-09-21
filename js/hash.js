@@ -5,12 +5,12 @@ class Hash {
     add(arrKeys, arrValues) {
         for (let i = 0; i < arrKeys.length; i++) {
             if (this.table[arrKeys[i]])
-                return console.error('Essa chave já está sendo usada')
+                return alert('Essa chave já está sendo usada')
             this.table[arrKeys[i]] = arrValues[i]
         }
     }
     change(key, value) {
-        if (!this.table[key]) return console.error('Essa chave não foi criada')
+        if (!this.table[key]) return alert('Essa chave não foi criada')
         this.table[key] = value
     }
     get(key) {
